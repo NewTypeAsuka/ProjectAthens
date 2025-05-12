@@ -111,7 +111,7 @@ footer {
     }
 
     .card {
-        min-width: 70vw;
+        min-width: 30vw;
         padding: 0.5rem;
     }
 
@@ -123,8 +123,8 @@ footer {
     }
 
     .card-image img {
-        width: 100%;
-        height: 100%;
+        width: 50vw;
+        height: 50vw;
         object-fit: cover;
         border-radius: 12px;
         display: block;
