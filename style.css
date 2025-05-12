@@ -78,7 +78,6 @@ main {
     font-size: 1.5rem;
 }
 
-
 /* footer style */
 footer {
     background-color: lightgrey;
@@ -86,4 +85,63 @@ footer {
     text-align: center;
     padding: 1rem;
     font-size: 0.75rem;
+}
+
+/* smartphone */
+@media (max-width: 768px) {
+    body {
+        font-size: 0.9rem;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    .card {
+        min-width: 160px;
+        padding: 0.75rem;
+    }
+
+    .card-image img {
+        height: 160px;
+    }
+
+    .card-name,
+    .card-price {
+        font-size: 1.2rem;
+    }
+
+    main {
+        padding: 1rem;
+        padding-top: 5rem;
+    }
+}
+
+/* pc */
+@media (min-width: 1024px) {
+    .card {
+        min-width: 240px;
+    }
+
+    .card-image img {
+        height: 240px;
+    }
+}
+
+/* dark mode */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: black;
+        color: white;
+    }
+
+    .card {
+        background-color: dimgray;
+        color: white;
+    }
+
+    footer {
+        background-color: gray;
+        color: lightgray;
+    }
 }
