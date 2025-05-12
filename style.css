@@ -111,7 +111,7 @@ footer {
     }
 
     .card {
-        min-width: 160px;
+        min-width: 70vw;
         padding: 0.5rem;
     }
 
@@ -133,6 +133,8 @@ footer {
     .card-name,
     .card-price {
         font-size: 1.2rem;
+        text-align: center;
+        margin-top: 0.25rem;
     }
 
     main {
