@@ -14,7 +14,7 @@ body {
 header {
     background-color: red;
     color: white;
-    padding: 1rem 0rem 1rem 0rem;
+    padding: 1rem 0;
     text-align: center;
     position: fixed;
     top: 0;
@@ -25,7 +25,6 @@ header {
     justify-content: center;
     align-items: center;
 }
-
 header h1 {
     margin: 0;
     font-size: 2.5rem;
@@ -39,6 +38,18 @@ main {
     padding-top: 6rem;
 }
 
+.category {
+    margin-bottom: 2rem;
+}
+.category h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-align: left;
+    color: #333;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 0.5rem;
+}
+
 .card-container {
     display: flex;
     flex-direction: row;
@@ -46,8 +57,9 @@ main {
     gap: 1rem;
     padding: 1rem;
     scroll-snap-type: x mandatory;
+    scroll-padding-left: 1rem;
+    scroll-behavior: smooth;
 }
-
 .card {
     min-width: 200px;
     flex-shrink: 0;
@@ -62,33 +74,32 @@ main {
     justify-content: space-between;
 }
 
-.card:hover {
-    background-color: lightgray;
-    box-shadow: 0 4px 12px grey;
-    transform: scale(1.05);
+/* hover는 데스크탑 전용 */
+@media (hover: hover) and (pointer: fine) {
+    .card:hover {
+        background-color: lightgray;
+        box-shadow: 0 4px 12px grey;
+        transform: scale(1.05);
+    }
 }
-
 .card-image {
     aspect-ratio: 1 / 1;
     width: 100%;
     overflow: hidden;
     border-radius: 12px;
 }
-
 .card-image img {
     width: 100%;
-    height: 100%;
+    height: auto;
     object-fit: cover;
     display: block;
     border-radius: 12px;
 }
-
 .card-name {
     text-align: center;
     font-size: 1.5rem;
     margin-top: 0.5rem;
 }
-
 .card-price {
     text-align: center;
     font-size: 1.5rem;
@@ -104,7 +115,7 @@ footer {
     font-size: 0.75rem;
 }
 
-/* smartphone */
+/* mobile */
 @media (max-width: 768px) {
     body {
         font-size: 0.9rem;
@@ -113,50 +124,105 @@ footer {
     header h1 {
         font-size: 1.8rem;
     }
-
-    .card {
-        min-width: 30vw;
-        padding: 0.5rem;
+    .category {
+        margin-bottom: 1rem;
     }
-
+    .category h2 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+    .card-container {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 0.5rem;
+        padding: 0.5rem;
+        scroll-snap-type: x mandatory;
+        scroll-padding-left: 0.5rem;
+        scroll-behavior: smooth;
+    }
+    .card {
+        min-width: 120px;      /* 카드 최소 너비 제한 */
+        max-width: 120px;
+        flex-shrink: 0;
+        background-color: white;
+        margin: 0 auto;
+        padding: 0.5rem;
+        border-radius: 8px;
+        box-shadow: 0 0 4px rgba(0,0,0,0.1);
+        scroll-snap-align: start;
+        transition: background-color 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
     .card-image {
-        aspect-ratio: 1 / 1;
         width: 100%;
+        aspect-ratio: 1 / 1;
         overflow: hidden;
         border-radius: 12px;
     }
-
     .card-image img {
-        width: 50vw;
-        height: 50vw;
+        width: 100%;
+        height: 100%;
         object-fit: cover;
-        border-radius: 12px;
         display: block;
+        border-radius: 12px;
     }
-
     .card-name,
     .card-price {
         font-size: 1.2rem;
         text-align: center;
         margin-top: 0.25rem;
     }
+    .card-container {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+    }
 
     main {
         padding: 1rem;
         padding-top: 5rem;
     }
-    
     footer {
-        padding: 0rem;
+        padding: 0;
     }
 }
+
+
+/* tablet */
+@media (min-width: 769px) and (max-width: 1023px) {
+    .card {
+        width: 100%;
+        max-width: 400px;     /* 카드 최대 너비 제한 */
+        margin: 0 auto;       /* 가운데 정렬 */
+        padding: 1rem;
+    }
+    .card-image {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        overflow: hidden;
+        border-radius: 12px;
+    }
+    .card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        border-radius: 12px;
+    }
+    .card-name,
+    .card-price {
+        font-size: 1.3rem;
+    }
+}
+
 
 /* pc */
 @media (min-width: 1024px) {
     .card {
         min-width: 240px;
     }
-
     .card-image img {
         height: 240px;
     }
@@ -168,12 +234,10 @@ footer {
         background-color: black;
         color: white;
     }
-
     .card {
         background-color: dimgray;
         color: white;
     }
-
     footer {
         background-color: gray;
         color: lightgray;
